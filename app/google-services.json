@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "292545820886",
+    "firebase_url": "https://mediscreen-674eb.firebaseio.com",
+    "project_id": "mediscreen-674eb",
+    "storage_bucket": "mediscreen-674eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292545820886:android:4c35d0758db8a2db4b3177",
+        "android_client_info": {
+          "package_name": "com.example.mediscreenapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292545820886-5nr5fk1tk96v6kh5s6f1arq9vj6ec7mn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2ltgP2sIPSTvLYyL7AnVrsngfwsfYZxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292545820886-5nr5fk1tk96v6kh5s6f1arq9vj6ec7mn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
