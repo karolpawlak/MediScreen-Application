@@ -12,41 +12,84 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.HelpActivity"
-            android:label="@string/helpTitle">
+            android:name=".ui.HelpActivity"
+            android:label="@string/helpTitle"
+            android:parentActivityName="com.example.mediscreenapp.ui.MainActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.ProfileActivity"
-            android:label="@string/profileTitle">
+            android:name=".ui.ProfileActivity"
+            android:label="@string/profileTitle"
+            android:parentActivityName="com.example.mediscreenapp.ui.MainActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.FeedbackActivity"
-            android:label="@string/feedbackTitle">
+            android:name=".ui.FeedbackActivity"
+            android:label="@string/feedbackTitle"
+            android:parentActivityName="com.example.mediscreenapp.ui.MainActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.DiagnosisActivity"
-            android:label="@string/diagnosisTitle">
+            android:name=".ui.DiagnosisActivity"
+            android:label="@string/diagnosisTitle"
+            android:parentActivityName="com.example.mediscreenapp.ui.MainActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.SupportActivity"
-            android:label="@string/supportTitle">
+            android:name=".ui.SupportActivity"
+            android:label="@string/supportTitle"
+            android:parentActivityName="com.example.mediscreenapp.ui.MainActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.RegisterActivity"
-            android:label="@string/registerTitle">
+            android:name=".ui.RegisterActivity"
+            android:label="@string/registerTitle"
+            android:parentActivityName="com.example.mediscreenapp.ui.HomeActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.HomeActivity" />
         </activity>
         <activity
-            android:name=".activities.HomeActivity"
+            android:name=".ui.HomeActivity"
             android:label="@string/homeTitle"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTop">
         </activity>
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".ui.LoginActivity"
             android:label="@string/loginTitle"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:parentActivityName="com.example.mediscreenapp.ui.HomeActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.HomeActivity" />
         </activity>
         <activity
-            android:name=".activities.SplashScreenActivity"
+            android:name=".ui.SplashScreenActivity"
             android:theme="@style/AppThemeNoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,9 +98,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/mainTitle"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTop">
         </activity>
     </application>
 

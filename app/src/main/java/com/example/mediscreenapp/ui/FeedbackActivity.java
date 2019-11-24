@@ -1,4 +1,4 @@
-package com.example.mediscreenapp.activities;
+package com.example.mediscreenapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.mediscreenapp.R;
 
-public class HelpActivity extends AppCompatActivity {
+public class FeedbackActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help);
+        setContentView(R.layout.activity_feedback);
     }
 }

@@ -10,7 +10,7 @@
  * Description:
  */
 
-package com.example.mediscreenapp.activities;
+package com.example.mediscreenapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
