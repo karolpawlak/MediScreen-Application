@@ -13,8 +13,34 @@
     <string name="profileTitle">Profile</string>
     <string name="helpTitle">Help</string>
 
+    <!--TextViews-->
+    <string name="firstNameTextView">First name:</string>
+    <string name="lastNameTextView">Last name:</string>
+    <string name="emailTextView">Email:</string>
+    <string name="phoneNoTextView">Phone No.:</string>
+    <string name="patientNoTextView">Patient No.:</string>
+    <string name="passwordTextView">Password:</string>
+    <string name="repeatPasswordTextView">Re-Password:</string>
+    <string name="firstNameValTextView">you cannot leave first name blank</string>
+    <string name="lastNameValTextView">you cannot leave last name blank</string>
+    <string name="emailEmptyValTextView">you cannot leave email blank</string>
+    <string name="emailAtValTextView">your email must contain @</string>
+    <string name="phoneNoValTextView">you cannot leave phone number blank</string>
+    <string name="passwordValTextView">you cannot leave password blank</string>
+    <string name="passwordLengthValTextView">password must be at least 6 chars long</string>
+    <string name="passwordMatchValTextView">your passwords do not match</string>
 
-    <!--Notification-->
+
+
+
+    <!--EditText-->
+    <string name="emailHintEditText">\@</string>
+    <string name="passwordHintEditText">password</string>
+
+    <!--Notifications-->
+    <string name="accountCreatedToast">Account created!</string>
+    <string name="accountCreateFailToast">Could not create an account...</string>
+
 
     <!--AlertDialog-->
 

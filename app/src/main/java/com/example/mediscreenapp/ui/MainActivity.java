@@ -6,10 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import com.example.mediscreenapp.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
+    //firebase
+    private FirebaseAnalytics analytics;
+    private FirebaseFirestore db;
 
     //variables
     private Button supportbtn;
@@ -24,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //declaring firebase instances
+        analytics = FirebaseAnalytics.getInstance(this);
+        db = FirebaseFirestore.getInstance();
 
         //declaring UI components
         supportbtn = (Button) findViewById(R.id.supportButton);
@@ -90,34 +98,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //methods
-    public void openSupportActivity()
+    private void openSupportActivity()
     {
         Intent intent = new Intent(this, SupportActivity.class);
         startActivity(intent);
     }
 
-    public void openDiagnosisActivity()
+    private void openDiagnosisActivity()
     {
         Intent intent = new Intent(this, DiagnosisActivity.class);
         startActivity(intent);
     }
 
 
-    public void openFeedbackActivity()
+    private void openFeedbackActivity()
     {
         Intent intent = new Intent(this, FeedbackActivity.class);
         startActivity(intent);
     }
 
-    public void openProfileActivity()
+    private void openProfileActivity()
     {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 
-    public void openHelpActivity()
+    private void openHelpActivity()
     {
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
     }
+
+    private void logLoginEvent()
+    {
+        Bundle params = new Bundle();
+        params.putString(FirebaseAnalytics.Param.METHOD, "MediScreen");
+        analytics.logEvent(FirebaseAnalytics.Event.LOGIN, params);
+    }
+
 }

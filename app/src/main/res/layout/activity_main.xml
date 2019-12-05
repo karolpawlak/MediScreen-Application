@@ -13,12 +13,14 @@
         tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
+            android:id="@+id/mainlay1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/mainlay1.1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -52,6 +54,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/mainlay1.2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">

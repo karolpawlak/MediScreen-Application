@@ -1,23 +1,51 @@
 package com.example.mediscreenapp.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mediscreenapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class LoginActivity extends AppCompatActivity
 {
+    //firebase
+    private FirebaseAnalytics analytics;
+    private FirebaseFirestore db;
+    private FirebaseAuth auth;
+    private static final String TAG = "MediScreen Firestore";
 
     //variables
-    private EditText userID;
-    private EditText pword;
+    private EditText userId;
+    private EditText userPassword;
     private Button loginbtn;
     private Button resetbtn;
+    private String username;
+    private String pword;
+    private ProgressBar progressBar;
+    private TextView vallog;
+    private TextView valpwd;
+    private boolean validate;
+    private boolean confirmValidation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,11 +53,20 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //declaring firebase instances
+        analytics = FirebaseAnalytics.getInstance(this);
+        db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+
         //declaring UI components
-        userID = (EditText) findViewById(R.id.editTextUsername);
-        pword = (EditText) findViewById(R.id.editTextPassword);
+        userId = (EditText) findViewById(R.id.editTextEmailLogin);
+        userPassword = (EditText) findViewById(R.id.editTextPasswordLogin);
         loginbtn = (Button) findViewById(R.id.loginButton);
         resetbtn = (Button) findViewById(R.id.resetButton);
+        vallog = (TextView) findViewById(R.id.textViewVal6);
+        valpwd = (TextView) findViewById(R.id.textViewVal7);
+        progressBar = (ProgressBar) findViewById(R.id.progressBarLogin);
+
 
         //on click actions
         loginbtn.setOnClickListener(new View.OnClickListener()
@@ -37,7 +74,42 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                openMainActivity();
+                //get data from UI components
+                username = userId.getText().toString();
+                pword = userPassword.getText().toString();
+
+                //make progress bar visible
+                progressBar.setVisibility(View.VISIBLE);
+
+                //check inputs
+                confirmValidation = validateInputs();
+                if(confirmValidation)
+                {
+                    //authenticate user and password in firebase
+                    auth.signInWithEmailAndPassword(username, pword)
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    progressBar.setVisibility(View.GONE);
+                                    if (task.isSuccessful())
+                                    {
+                                        Toast.makeText(getApplicationContext(),"Logged in!", Toast.LENGTH_SHORT).show();
+                                        openMainActivity();
+                                        finish();
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                }
+                            });
+                }
+
+                else
+                {
+
+                }
+
             }
         });
 
@@ -46,15 +118,50 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                userID.setText("");
-                pword.setText("");
+                userId.setText("");
+                userPassword.setText("");
             }
         });
     }
 
-    //public or private????????????
+    private boolean validateInputs()
+    {
+        validate = true;
+        vallog.setText("");
+        valpwd.setText("");
+
+        if (TextUtils.isEmpty(username))
+        {
+            validate = false;
+            vallog.setText(getString(R.string.emailEmptyValTextView));
+
+        }
+
+        if (!(username.contains("@")))
+        {
+            validate = false;
+            vallog.setText(getString(R.string.emailAtValTextView));
+        }
+
+
+        if (TextUtils.isEmpty(pword))
+        {
+            validate = false;
+            valpwd.setText(getString(R.string.passwordValTextView));
+        }
+
+
+        if (pword.length() < 6)
+        {
+            validate = false;
+            valpwd.setText(getString(R.string.passwordLengthValTextView));
+        }
+
+        return validate;
+    }
+
     //methods
-    public void openMainActivity()
+    private void openMainActivity()
     {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
