@@ -70,11 +70,11 @@ public class RegisterActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
         //declaring firebase instances
         analytics = FirebaseAnalytics.getInstance(this);
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
-
         //declaring UI components
         userFirstName = (EditText) findViewById(R.id.editTextFirstName);
         userLastName = (EditText) findViewById(R.id.editTextLastName);
@@ -168,12 +168,6 @@ public class RegisterActivity extends AppCompatActivity
             validate = false;
             valln.setText(getString(R.string.lastNameValTextView));
 
-        }
-
-        if (TextUtils.isEmpty(email))
-        {
-            validate = false;
-            valem.setText(getString(R.string.emailEmptyValTextView));
         }
 
         if (!(email.contains("@")))

@@ -12,6 +12,8 @@
     <string name="feedbackTitle">Feedback</string>
     <string name="profileTitle">Profile</string>
     <string name="helpTitle">Help</string>
+    <string name="recoveryTitle">Forgot password</string>
+
 
     <!--TextViews-->
     <string name="firstNameTextView">First name:</string>
@@ -23,14 +25,11 @@
     <string name="repeatPasswordTextView">Re-Password:</string>
     <string name="firstNameValTextView">you cannot leave first name blank</string>
     <string name="lastNameValTextView">you cannot leave last name blank</string>
-    <string name="emailEmptyValTextView">you cannot leave email blank</string>
     <string name="emailAtValTextView">your email must contain @</string>
     <string name="phoneNoValTextView">you cannot leave phone number blank</string>
     <string name="passwordValTextView">you cannot leave password blank</string>
     <string name="passwordLengthValTextView">password must be at least 6 chars long</string>
     <string name="passwordMatchValTextView">your passwords do not match</string>
-
-
 
 
     <!--EditText-->
@@ -40,6 +39,10 @@
     <!--Notifications-->
     <string name="accountCreatedToast">Account created!</string>
     <string name="accountCreateFailToast">Could not create an account...</string>
+    <string name="passwordRecoveredToast">We have sent you an email!</string>
+    <string name="passwordRecoveredFailToast">Account not found!</string>
+    <string name="loginToast">Logging in...</string>
+    <string name="loginFailToast">Login failed!</string>
 
 
     <!--AlertDialog-->
@@ -48,13 +51,21 @@
     <string name="loginButton">Login</string>
     <string name="registerButton">Register</string>
     <string name="resetButton">Reset</string>
-    <string name="forgotPasswordButton">Trouble signing in?</string>
+    <string name="submitButton">Submit</string>
+    <string name="forgotPasswordButton">Forgot your password?</string>
     <string name="supportButton">Support</string>
     <string name="callButton">Call</string>
     <string name="aiButton">Diagnosis</string>
     <string name="feedbackButton">Feedback</string>
     <string name="profileButton">Profile</string>
     <string name="helpButton">Help</string>
+
+    <!--Extra-->
+    <string name="recoveryMessage1">Don\'t worry!</string>
+    <string name="recoveryMessage2">We need your registered email and we will send you email with instructions to reset your password.</string>
+
+
+
 
 
 </resources>

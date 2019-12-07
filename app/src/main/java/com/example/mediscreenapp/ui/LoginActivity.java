@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity
 {
     //firebase
     private FirebaseAnalytics analytics;
-    private FirebaseFirestore db;
     private FirebaseAuth auth;
     private static final String TAG = "MediScreen Firestore";
 
@@ -44,6 +43,7 @@ public class LoginActivity extends AppCompatActivity
     private ProgressBar progressBar;
     private TextView vallog;
     private TextView valpwd;
+    private TextView forgotPassword;
     private boolean validate;
     private boolean confirmValidation;
 
@@ -55,7 +55,6 @@ public class LoginActivity extends AppCompatActivity
 
         //declaring firebase instances
         analytics = FirebaseAnalytics.getInstance(this);
-        db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
         //declaring UI components
@@ -65,6 +64,7 @@ public class LoginActivity extends AppCompatActivity
         resetbtn = (Button) findViewById(R.id.resetButton);
         vallog = (TextView) findViewById(R.id.textViewVal6);
         valpwd = (TextView) findViewById(R.id.textViewVal7);
+        forgotPassword = (TextView) findViewById(R.id.textViewForgotPassword);
         progressBar = (ProgressBar) findViewById(R.id.progressBarLogin);
 
 
@@ -93,13 +93,13 @@ public class LoginActivity extends AppCompatActivity
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful())
                                     {
-                                        Toast.makeText(getApplicationContext(),"Logged in!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),getString(R.string.loginToast) , Toast.LENGTH_SHORT).show();
                                         openMainActivity();
                                         finish();
                                     }
                                     else
                                     {
-
+                                        Toast.makeText(getApplicationContext(), getString(R.string.loginFailToast) , Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -107,11 +107,22 @@ public class LoginActivity extends AppCompatActivity
 
                 else
                 {
-
+                    progressBar.setVisibility(View.GONE);
                 }
 
             }
         });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                openRecoveryActivity();
+            }
+        });
+
+
 
         resetbtn.setOnClickListener(new View.OnClickListener()
         {
@@ -129,13 +140,6 @@ public class LoginActivity extends AppCompatActivity
         validate = true;
         vallog.setText("");
         valpwd.setText("");
-
-        if (TextUtils.isEmpty(username))
-        {
-            validate = false;
-            vallog.setText(getString(R.string.emailEmptyValTextView));
-
-        }
 
         if (!(username.contains("@")))
         {
@@ -164,6 +168,12 @@ public class LoginActivity extends AppCompatActivity
     private void openMainActivity()
     {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void openRecoveryActivity()
+    {
+        Intent intent = new Intent(this, RecoveryActivity.class);
         startActivity(intent);
     }
 }
