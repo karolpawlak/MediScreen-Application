@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HomeActivity">
+    tools:context=".ui.DiabetesActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,19 +16,10 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
-            <Button
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:id="@+id/loginButtonHome"
+            <TextView
+                android:id="@+id/textViewOutput"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/loginButton" />
-
-            <Button
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:id="@+id/registerButtonHome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/registerButton" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 

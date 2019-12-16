@@ -13,6 +13,12 @@
     <string name="profileTitle">Profile</string>
     <string name="helpTitle">Help</string>
     <string name="recoveryTitle">Forgot password</string>
+    <string name="diabetesTitle">Run diagnosis for diabetes</string>
+    <string name="heartTitle">Run diagnosis for heart disease</string>
+    <string name="lungTitle">Run diagnosis for lung cancer</string>
+    <string name="editprofileTitle">Edit profile</string>
+    <string name="addGPTitle">GP details</string>
+    <string name="addInsurerTitle">Insurer details</string>
 
 
     <!--TextViews-->
@@ -30,6 +36,10 @@
     <string name="passwordValTextView">you cannot leave password blank</string>
     <string name="passwordLengthValTextView">password must be at least 6 chars long</string>
     <string name="passwordMatchValTextView">your passwords do not match</string>
+    <string name="diagnosisChoice">Run diagnosis for…</string>
+    <string name="mainMessage">Logged in as</string>
+    <string name="menuMessage">Menu</string>
+
 
 
     <!--EditText-->
@@ -43,6 +53,8 @@
     <string name="passwordRecoveredFailToast">Account not found!</string>
     <string name="loginToast">Logging in...</string>
     <string name="loginFailToast">Login failed!</string>
+    <string name="profileUpdatedToast">Profile updated!</string>
+
 
 
     <!--AlertDialog-->
@@ -54,18 +66,24 @@
     <string name="submitButton">Submit</string>
     <string name="forgotPasswordButton">Forgot your password?</string>
     <string name="supportButton">Support</string>
-    <string name="callButton">Call</string>
+    <string name="callButton">Call GP</string>
     <string name="aiButton">Diagnosis</string>
     <string name="feedbackButton">Feedback</string>
     <string name="profileButton">Profile</string>
     <string name="helpButton">Help</string>
+    <string name="diabetesButton">Diabetes</string>
+    <string name="heartdiseaseButton">Heart disease</string>
+    <string name="lungcancerButton">Lung cancer</string>
+    <string name="editProfileButton">Edit profile</string>
+    <string name="gpButton">GP details</string>
+    <string name="insurerButton">Insurance provider</string>
+    <string name="saveChangesButton">Save changes</string>
+
+
 
     <!--Extra-->
     <string name="recoveryMessage1">Don\'t worry!</string>
     <string name="recoveryMessage2">We need your registered email and we will send you email with instructions to reset your password.</string>
-
-
-
 
 
 </resources>

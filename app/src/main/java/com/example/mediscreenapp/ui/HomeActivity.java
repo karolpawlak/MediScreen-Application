@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity
 
         //declaring UI components
         loginbtn = (Button) findViewById(R.id.loginButtonHome);
-        registerbtn = (Button) findViewById(R.id.registerButton);
+        registerbtn = (Button) findViewById(R.id.registerButtonHome);
 
         //on click actions
         loginbtn.setOnClickListener(new View.OnClickListener()

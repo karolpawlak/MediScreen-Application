@@ -15,14 +15,74 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.GPActivity"
+            android:label="@string/addGPTitle"
+            android:parentActivityName=".ui.ProfileActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".ui.InsurerActivity"
+            android:label="@string/addInsurerTitle"
+            android:parentActivityName=".ui.ProfileActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".ui.EditProfileActivity"
+            android:label="@string/editprofileTitle"
+            android:parentActivityName=".ui.ProfileActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".ui.HeartActivity"
+            android:label="@string/heartTitle"
+            android:parentActivityName=".ui.DiagnosisActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.DiagnosisActivity" />
+        </activity>
+        <activity
+            android:name=".ui.LungActivity"
+            android:label="@string/lungTitle"
+            android:parentActivityName=".ui.DiagnosisActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.DiagnosisActivity" />
+        </activity>
+        <activity
+            android:name=".ui.DiabetesActivity"
+            android:label="@string/diabetesTitle"
+            android:parentActivityName=".ui.DiagnosisActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mediscreenapp.ui.DiagnosisActivity" />
+        </activity>
+        <activity
             android:name=".ui.RecoveryActivity"
             android:label="@string/recoveryTitle"
             android:parentActivityName=".ui.LoginActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mediscreenapp.ui.LoginActivity" />
-
         </activity>
         <activity
             android:name=".ui.HelpActivity"
@@ -37,6 +97,7 @@
         <activity
             android:name=".ui.ProfileActivity"
             android:label="@string/profileTitle"
+            android:launchMode="singleTop"
             android:parentActivityName=".ui.MainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -46,17 +107,11 @@
         </activity>
         <activity
             android:name=".ui.FeedbackActivity"
-            android:label="@string/feedbackTitle"
-            android:parentActivityName=".ui.MainActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mediscreenapp.ui.MainActivity" />
-        </activity>
+            android:label="@string/feedbackTitle" />
         <activity
             android:name=".ui.DiagnosisActivity"
             android:label="@string/diagnosisTitle"
+            android:launchMode="singleTop"
             android:parentActivityName=".ui.MainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -66,14 +121,7 @@
         </activity>
         <activity
             android:name=".ui.SupportActivity"
-            android:label="@string/supportTitle"
-            android:parentActivityName=".ui.MainActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mediscreenapp.ui.MainActivity" />
-        </activity>
+            android:label="@string/supportTitle" />
         <activity
             android:name=".ui.RegisterActivity"
             android:label="@string/registerTitle"
@@ -88,9 +136,7 @@
             android:name=".ui.HomeActivity"
             android:label="@string/homeTitle"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/loginTitle"
@@ -115,7 +161,7 @@
             android:name=".ui.MainActivity"
             android:label="@string/mainTitle"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

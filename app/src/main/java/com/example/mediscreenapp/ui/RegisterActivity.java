@@ -75,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity
         analytics = FirebaseAnalytics.getInstance(this);
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
+
         //declaring UI components
         userFirstName = (EditText) findViewById(R.id.editTextFirstName);
         userLastName = (EditText) findViewById(R.id.editTextLastName);
