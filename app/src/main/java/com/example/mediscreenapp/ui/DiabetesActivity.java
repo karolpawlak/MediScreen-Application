@@ -9,12 +9,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.mediscreenapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.ml.common.FirebaseMLException;
+import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
+import com.google.firebase.ml.common.modeldownload.FirebaseModelManager;
 import com.google.firebase.ml.custom.FirebaseCustomLocalModel;
 import com.google.firebase.ml.custom.FirebaseCustomRemoteModel;
 import com.google.firebase.ml.custom.FirebaseModelDataType;
@@ -31,7 +35,8 @@ public class DiabetesActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private static final String TAG = "MediScreen Firestore";
     private FirebaseCustomLocalModel localModel;
-    private int[][] input;
+    private FirebaseCustomRemoteModel remoteModel;
+    private float[][] input;
     private TextView outputView;
 
     @Override
@@ -45,7 +50,7 @@ public class DiabetesActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         //declaring variables
-        input = new int[1][8];
+        input = new float[1][8];
 
 
         outputView = (TextView) findViewById(R.id.textViewOutput);
@@ -53,10 +58,10 @@ public class DiabetesActivity extends AppCompatActivity {
         input[0][0] = 3;
         input[0][1] = 100;
         input[0][2] = 50;
-        input[0][3] = 10;
-        input[0][4] = 50;
+        input[0][3] = 50;
+        input[0][4] = 300;
         input[0][5] = 30;
-        input[0][6] = 10;
+        input[0][6] = 1;
         input[0][7] = 40;
 
 
@@ -82,6 +87,21 @@ public class DiabetesActivity extends AppCompatActivity {
                 .setAssetFilePath("diabetes-model.tflite")
                 .build();
         // [END mlkit_local_model_source]
+    }
+
+    private void startModelDownloadTask(FirebaseCustomRemoteModel remoteModel) {
+        // [START mlkit_model_download_task]
+        FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder()
+                .requireWifi()
+                .build();
+        FirebaseModelManager.getInstance().download(remoteModel, conditions)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // Success.
+                    }
+                });
+        // [END mlkit_model_download_task]
     }
 
     private FirebaseModelInterpreter createInterpreter(FirebaseCustomLocalModel localModel) throws FirebaseMLException {
@@ -111,7 +131,7 @@ public class DiabetesActivity extends AppCompatActivity {
     }
 
 
-    private void runInference(int[][] i) throws FirebaseMLException {
+    private void runInference(float[][] i) throws FirebaseMLException {
         configureLocalModelSource();
         FirebaseModelInterpreter firebaseInterpreter = createInterpreter(localModel);
         FirebaseModelInputOutputOptions inputOutputOptions = createInputOutputOptions();
@@ -132,7 +152,7 @@ public class DiabetesActivity extends AppCompatActivity {
                                 // [START_EXCLUDE]
                                 // [START mlkit_read_result]
                                 float[][] output = result.getOutput(0);
-                                String res = String.valueOf(output);
+                                String res = String.valueOf(output[0][0]);
                                 outputView.setText(res);
                                 float[] probabilities = output[0];
                                 Log.d("Successful","This worked");

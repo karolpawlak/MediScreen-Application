@@ -24,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button editbtn;
     private Button gpbtn;
     private Button insurerbtn;
+    private Button historybtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class ProfileActivity extends AppCompatActivity {
         editbtn = (Button) findViewById(R.id.buttonEditProfile);
         gpbtn = (Button) findViewById(R.id.buttonGPDetails);
         insurerbtn = (Button) findViewById(R.id.buttonInsurerDetails);
+        historybtn = (Button) findViewById(R.id.buttonMedicalHistory);
+
 
         //on click actions
         editbtn.setOnClickListener(new View.OnClickListener()
@@ -49,6 +52,15 @@ public class ProfileActivity extends AppCompatActivity {
                 openEditActivity();
             }
         });
+        historybtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                openMedicalHistoryActivity();
+            }
+        });
+
 
         gpbtn.setOnClickListener(new View.OnClickListener()
         {
@@ -86,6 +98,12 @@ public class ProfileActivity extends AppCompatActivity {
     private void openInsurerActivity()
     {
         Intent intent = new Intent(this, InsurerActivity.class);
+        startActivity(intent);
+    }
+
+    private void openMedicalHistoryActivity()
+    {
+        Intent intent = new Intent(this, MedicalHistoryActivity.class);
         startActivity(intent);
     }
 }

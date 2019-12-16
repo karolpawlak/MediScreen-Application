@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +29,8 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.w3c.dom.Text;
+
 public class EditProfileActivity extends AppCompatActivity {
     //firebase
     private FirebaseAnalytics analytics;
@@ -37,15 +42,24 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText userFirstName;
     private EditText userLastName;
     private EditText userPhoneNo;
+    private EditText userAge;
+
     private TextView valfn;
     private TextView valln;
     private TextView valpn;
+    private TextView vala;
+    private TextView valg;
     private Button savechangesbtn;
+    private Spinner spinner;
     private String fname;
     private String lname;
     private String phoneno;
+    private String gender;
+    private String ageString;
+    private int age;
     private boolean validate;
     private boolean confirmValidation;
+    private boolean spinnerSelectedValidation;
     private ProgressBar progressBar;
 
     @Override
@@ -62,11 +76,44 @@ public class EditProfileActivity extends AppCompatActivity {
         userFirstName = (EditText) findViewById(R.id.editTextFirstNameEdit);
         userLastName = (EditText) findViewById(R.id.editTextLastNameEdit);
         userPhoneNo = (EditText) findViewById(R.id.editTextPhoneNoEdit);
+        userAge = (EditText) findViewById(R.id.editTextAge);
         valfn = (TextView) findViewById(R.id.textViewVal9);
         valln = (TextView) findViewById(R.id.textViewVal10);
         valpn = (TextView) findViewById(R.id.textViewVal11);
+        valg = (TextView) findViewById(R.id.textViewVal12);
+        vala = (TextView) findViewById(R.id.textViewVal13);
         savechangesbtn = (Button) findViewById(R.id.saveEditButton);
         progressBar = (ProgressBar) findViewById(R.id.progressBarEdit);
+        spinner = (Spinner) findViewById(R.id.spinnerGender);
+
+        //set up the adapter
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.gender_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                if(item.equals(getString(R.string.genderValidationChoice)))
+                {
+                    spinnerSelectedValidation = false;
+                }
+                else
+                {
+                    spinnerSelectedValidation = true;
+                    gender = item;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //do nothing
+            }
+        });
 
         String userEmail = auth.getCurrentUser().getEmail(); //load the current user
 
@@ -83,10 +130,32 @@ public class EditProfileActivity extends AppCompatActivity {
                                 String ln = document.getString("Last_Name");
                                 String pn = document.getString("Phone_No");
 
+                                try {
+
+                                    String a = Integer.toString(document.getLong("Age").intValue());
+                                    String g = document.getString("Gender");
+
+                                    userAge.setText(a);
+
+                                    int selection = 0;
+                                    if(g.equals("Female"))
+                                    {
+                                        selection = 1;
+                                    }
+                                    if(g.equals("Male"))
+                                    {
+                                        selection = 2;
+                                    }
+                                    spinner.setSelection(selection);
+
+                                }
+                                catch(Exception e) {
+
+                                }
+
                                 userFirstName.setText(fn);
                                 userLastName.setText(ln);
                                 userPhoneNo.setText(pn);
-
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                             }
                         } else {
@@ -102,6 +171,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 fname = userFirstName.getText().toString();
                 lname = userLastName.getText().toString();
                 phoneno = userPhoneNo.getText().toString();
+                ageString = userAge.getText().toString();
 
                 //make progress bar visible
                 progressBar.setVisibility(View.VISIBLE);
@@ -112,6 +182,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 //if all inputs are correct, update the data in the database
                 if(confirmValidation)
                 {
+                    age = Integer.parseInt(userAge.getText().toString());
                     String userEmail = auth.getCurrentUser().getEmail(); //load the current user
                     Query getUserData = db.collection("patients").whereEqualTo("Email", userEmail);
 
@@ -152,7 +223,9 @@ public class EditProfileActivity extends AppCompatActivity {
         userRef
                 .update("First_Name", fname,
                         "Last_Name", lname,
-                        "Phone_No", phoneno)
+                        "Phone_No", phoneno,
+                        "Age", age,
+                        "Gender", gender)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -175,6 +248,8 @@ public class EditProfileActivity extends AppCompatActivity {
         valfn.setText("");
         valln.setText("");
         valpn.setText("");
+        vala.setText("");
+        valg.setText("");
 
         if (TextUtils.isEmpty(fname))
         {
@@ -190,11 +265,25 @@ public class EditProfileActivity extends AppCompatActivity {
 
         }
 
+        if (TextUtils.isEmpty(ageString))
+        {
+            validate = false;
+            vala.setText(getString(R.string.ageValTextView));
+
+        }
+
 
         if (TextUtils.isEmpty(phoneno))
         {
             validate = false;
             valpn.setText(getString(R.string.phoneNoValTextView));
+
+        }
+
+        if (!spinnerSelectedValidation)
+        {
+            validate = false;
+            valg.setText(getString(R.string.genderValTextView));
 
         }
         return validate;

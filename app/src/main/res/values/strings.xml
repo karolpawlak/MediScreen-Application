@@ -19,6 +19,12 @@
     <string name="editprofileTitle">Edit profile</string>
     <string name="addGPTitle">GP details</string>
     <string name="addInsurerTitle">Insurer details</string>
+    <string name="medicalHistoryTitle">Medical history</string>
+    <string name="heartHistoryTitle">Heart history</string>
+    <string name="diabetesHistoryTitle">Diabetes history</string>
+    <string name="lungHistoryTitle">Lung cancer history</string>
+
+
 
 
     <!--TextViews-->
@@ -36,10 +42,14 @@
     <string name="passwordValTextView">you cannot leave password blank</string>
     <string name="passwordLengthValTextView">password must be at least 6 chars long</string>
     <string name="passwordMatchValTextView">your passwords do not match</string>
+    <string name="ageValTextView">age cannot be empty</string>
+    <string name="genderValTextView">please select your gender</string>
+
     <string name="diagnosisChoice">Run diagnosis for…</string>
     <string name="mainMessage">Logged in as</string>
     <string name="menuMessage">Menu</string>
-
+    <string name="ageTextView">Age:</string>
+    <string name="genderTextView">Gender:</string>
 
 
     <!--EditText-->
@@ -54,7 +64,6 @@
     <string name="loginToast">Logging in...</string>
     <string name="loginFailToast">Login failed!</string>
     <string name="profileUpdatedToast">Profile updated!</string>
-
 
 
     <!--AlertDialog-->
@@ -78,12 +87,19 @@
     <string name="gpButton">GP details</string>
     <string name="insurerButton">Insurance provider</string>
     <string name="saveChangesButton">Save changes</string>
-
+    <string name="medHistoryButton">Insert medical history</string>
 
 
     <!--Extra-->
     <string name="recoveryMessage1">Don\'t worry!</string>
+    <string name="genderValidationChoice">Select…</string>
     <string name="recoveryMessage2">We need your registered email and we will send you email with instructions to reset your password.</string>
+
+    <string-array name="gender_array">
+        <item>Select…</item>
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
 
 
 </resources>
