@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.mediscreenapp.R;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -103,7 +102,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void openMedicalHistoryActivity()
     {
-        Intent intent = new Intent(this, MedicalHistoryActivity.class);
+        Intent intent = new Intent(this, MedicalHistoryActivityP1.class);
         startActivity(intent);
     }
 }

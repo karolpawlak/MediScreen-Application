@@ -31,6 +31,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class EditProfileActivity extends AppCompatActivity {
     //firebase
     private FirebaseAnalytics analytics;
@@ -61,6 +65,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private boolean confirmValidation;
     private boolean spinnerSelectedValidation;
     private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -219,7 +224,6 @@ public class EditProfileActivity extends AppCompatActivity {
     {
         DocumentReference userRef = db.collection("patients").document(d);
 
-        // Set the "isCapital" field of the city 'DC'
         userRef
                 .update("First_Name", fname,
                         "Last_Name", lname,

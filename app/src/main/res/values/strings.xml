@@ -25,6 +25,36 @@
     <string name="lungHistoryTitle">Lung cancer history</string>
 
 
+    <!--Diagnosis text-->
+    <string name="diabetes1">How many times have you been pregnant?</string>
+    <string name="diabetes2">2-hour plasma glucose concentration </string>
+    <string name="diabetes3">Diastolic blood pressure\n(mm Hg)</string>
+    <string name="diabetes4">Triceps skin fold thickness (mm)</string>
+    <string name="diabetes5">2-hour serum insulin\n(mu U/ml)</string>
+    <string name="diabetes6">BMI (Body mass index)</string>
+    <string name="diabetes7">Diabetes pedigree function</string>
+
+    <string name="heart3">cp</string>
+    <string name="heart4">trestbps</string>
+    <string name="heart5">chol</string>
+    <string name="heart6">fbs</string>
+    <string name="heart7">restecg</string>
+    <string name="heart8">thalach</string>
+    <string name="heart9">exang</string>
+    <string name="heart10">oldpeak</string>
+    <string name="heart11">slope</string>
+    <string name="heart12">ca</string>
+    <string name="heart13">thal</string>
+    <string name="heart14">target</string>
+
+    <string name="lung2">Do you smoke?</string>
+    <string name="lung3">AreaQ</string>
+    <string name="lung4">Do you drink alcohol?</string>
+    <string name="lung5">Result</string>
+
+
+
+
 
 
     <!--TextViews-->
@@ -38,6 +68,7 @@
     <string name="firstNameValTextView">you cannot leave first name blank</string>
     <string name="lastNameValTextView">you cannot leave last name blank</string>
     <string name="emailAtValTextView">your email must contain @</string>
+    <string name="diagnosisInputValTextView">you cannot leave empty fields</string>
     <string name="phoneNoValTextView">you cannot leave phone number blank</string>
     <string name="passwordValTextView">you cannot leave password blank</string>
     <string name="passwordLengthValTextView">password must be at least 6 chars long</string>
@@ -62,8 +93,11 @@
     <string name="passwordRecoveredToast">We have sent you an email!</string>
     <string name="passwordRecoveredFailToast">Account not found!</string>
     <string name="loginToast">Logging in...</string>
+    <string name="diagnosisValuesAddedToast">Medical history added!</string>
     <string name="loginFailToast">Login failed!</string>
     <string name="profileUpdatedToast">Profile updated!</string>
+    <string name="redirectingToast">Redirecting…</string>
+
 
 
     <!--AlertDialog-->
@@ -88,6 +122,17 @@
     <string name="insurerButton">Insurance provider</string>
     <string name="saveChangesButton">Save changes</string>
     <string name="medHistoryButton">Insert medical history</string>
+    <string name="skipButton">Skip</string>
+    <string name="nextButton">Next</string>
+    <string name="finishButton">Finish</string>
+    <string name="returnMenuButton">Main menu</string>
+    <string name="yesRadioButton">Yes</string>
+    <string name="noRadioButton">No</string>
+
+
+
+
+
 
 
     <!--Extra-->

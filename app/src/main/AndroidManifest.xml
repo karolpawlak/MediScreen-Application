@@ -15,16 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.MedicalHistoryActivity"
-            android:label="@string/medicalHistoryTitle"
-            android:parentActivityName=".ui.ProfileActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mediscreenapp.ui.ProfileActivity" />
+            android:name=".ui.MedicalHistoryActivityP3"
+            android:label="@string/lungHistoryTitle">
         </activity>
-
+        <activity
+            android:name=".ui.MedicalHistoryActivityP2"
+            android:label="@string/heartHistoryTitle">
+        </activity>
+        <activity
+            android:name=".ui.MedicalHistoryActivityP1"
+            android:label="@string/diabetesHistoryTitle">
+        </activity>
         <activity
             android:name=".ui.GPActivity"
             android:label="@string/addGPTitle"
